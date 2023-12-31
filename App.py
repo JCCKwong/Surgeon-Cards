@@ -21,7 +21,7 @@ staff_list = df[df['Procedure']==procedure_select]['Staff'].sort_values(ascendin
 staff_select = st.selectbox('Select Staff', (staff_list))
 
 submit = st.button("SUBMIT")
-equipment_setup, keysteps, dictation = st.tabs(["Equipment & Setup", "Key Steps", "Dictation"])
+equipment_setup, keysteps, dictation, postop_ccac = st.tabs(["Equipment & Setup", "Key Steps", "Dictation", "Post-op & CCAC"])
 if submit:
     filtered_df = df[(df['Procedure'] == procedure_select) & (df['Staff'] == staff_select)].reset_index(drop=True)
 
@@ -38,5 +38,11 @@ if submit:
     with dictation:
         st.header("Dictation")
         st.write(filtered_df['Dictation'][0])
+
+    with postop_ccac:
+        st.header('Post-op Care')
+        st.write(filtered_df['Post-op'][0])
+        st.header('CCAC')
+        st.write(filtered_df['CCAC'][0])
 
 st.image(logo, use_column_width=True)
