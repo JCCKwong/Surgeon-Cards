@@ -9,7 +9,7 @@ st.set_page_config(page_title="UofT Uro Surgeon Cards",
 # Create a connection object.
 conn = st.connection("gsheets", type=GSheetsConnection)
 df = conn.read()
-logo = PIL.Image.open(r'images\uofturo.png')
+logo = PIL.Image.open('images/uofturo.png')
 
 st.title("UofT Urology Surgeon Cards")
 st.write('Developed by Jethro Kwong')
